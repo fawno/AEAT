@@ -1,0 +1,26 @@
+{
+  "name": "fawno/aeat",
+  "version": "1.0.0",
+  "description": "Clases para los servicios web de la AEAT",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Fawno",
+      "homepage": "https://github.com/fawno/AEAT/graphs/contributors"
+    }
+  ],
+  "support": {
+    "issues": "https://github.com/fawno/AEAT/issues",
+    "source": "https://github.com/fawno/AEAT"
+  },
+  "require": {
+    "php": ">=5.6.0",
+    "ext-openssl": "*",
+    "ext-soap": "*"
+  },
+  "autoload": {
+    "psr-4": {
+      "Fawno\\AEAT\\": "src"
+    }
+  }
+}

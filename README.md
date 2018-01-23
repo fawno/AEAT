@@ -1,6 +1,7 @@
 [![GitHub license](https://img.shields.io/github/license/fawno/AEAT.svg)](https://github.com/fawno/AEAT/blob/master/LICENSE)
 [![GitHub release](https://img.shields.io/github/release/fawno/AEAT.svg)](https://github.com/fawno/AEAT/releases)
 [![Packagist](https://img.shields.io/packagist/v/fawno/AEAT.svg)](https://packagist.org/packages/fawno/aeat)
+[![Documentation](https://img.shields.io/badge/manual-wsdlVNif-blue.svg)](docs/wsdlVNif.md)
 
 # AEAT
 Clases para los servicios web de la [AEAT](http://www.agenciatributaria.es/)

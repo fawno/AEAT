@@ -38,6 +38,33 @@ Carga `wsdlVNif.php` en tu script:
   use Fawno\AEAT\wsdlVNif;
 ```
 
+### Instalación manual en CakePHP 2.x
+
+Descarga [wsdlVNif.php](https://github.com/fawno/AEAT/raw/master/src/wsdlVNif.php) y guardalo como Vendor/Fawno/AEAT/wsdlVNif.php
+
+Carga `wsdlVNif.php` en el controlador:
+
+```php
+<?php
+  App::uses('AppController', 'Controller');
+  App::uses('Fawno\AEAT\wsdlVNif', 'Vendor');
+
+  use Fawno\AEAT\wsdlVNif;
+
+  class ExampleController extends AppController {
+    public function example () {
+      $local_cert = 'certificado.pem';
+      $passphrase = 'contraseña';
+
+      $ssl_verifypeer = false;
+      $options['trace'] = true;
+      $options['cache_wsdl'] = WSDL_CACHE_NONE;
+
+      $wsdlVNif = new wsdlVNif($local_cert, $passphrase, $options, $ssl_verifypeer);
+    }
+  }
+```
+
 # Generar el certificado
 
 El servicio require de un certificado de persona física admitido en la Sede Electrónica de la AEAT, como certificados de empleados públicos o de la FNMT.

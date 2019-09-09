@@ -80,9 +80,15 @@ Para convertir un certificado P12 o PFX a formato PEM se puede utilizar el sigui
   $pkcs12_pass = 'contraseña';
   $local_cert = 'certificado.pem';
 
-  openssl_pkcs12_read(file_get_contents($pkcs12_file), $certs, $pkcs12_pass);
-  openssl_pkey_export($certs['pkey'], $pkey, $pkcs12_pass);
-  file_put_contents($local_cert, $certs['cert'] . $pkey);
+  if (openssl_pkcs12_read(file_get_contents($pkcs12_file), $certs, $pkcs12_pass)) {
+    if (openssl_pkey_export($certs['pkey'], $pkey, $pkcs12_pass) or !empty($pkey)) {
+      file_put_contents($local_cert, $certs['cert'] . $pkey);
+    } else {
+      echo 'ERROR: Unable to export private key.', PHP_EOL;
+    }
+  } else {
+    echo 'ERROR: Unable to read the cert store.', PHP_EOL;
+  }
 ```
 
 Con el código anterior se convierte el certificado en formato P12 `certificado.pfx` al formato PEM (`certificado.pem`). El nuevo certificado está protegido con la misma contraseña del certificado P12 original.

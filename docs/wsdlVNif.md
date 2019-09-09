@@ -89,7 +89,7 @@ Con el código anterior se convierte el certificado en formato P12 `certificado.
 
 El certificado en formato PEM ha de contender tanto el certificado como la clave privada, internamente se verá así:
 
-certificado.pem```txt
+```txt
 -----BEGIN CERTIFICATE-----
 MIIGrjCCBZMxJHERwxMCtYB/BcbxxnagAwIBAgIQGzANBgkqhkiG9w0BAQsFADBL
 ...

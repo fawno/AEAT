@@ -29,6 +29,8 @@
 
     protected function stream_context ($ssl_verifypeer = true, $options = []) {
       $options['http']['user_agent'] = 'PHPSoapClient';
+      $options['ssl']['ciphers'] = 'DEFAULT@SECLEVEL=1';
+      
       if (!$ssl_verifypeer) {
         $options['ssl']['verify_peer'] = false;
         $options['ssl']['verify_peer_name'] = false;

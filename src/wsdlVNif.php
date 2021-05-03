@@ -30,7 +30,7 @@
     protected function stream_context ($ssl_verifypeer = true, $options = []) {
       $options['http']['user_agent'] = 'PHPSoapClient';
       $options['ssl']['ciphers'] = 'DEFAULT@SECLEVEL=1';
-      
+
       if (!$ssl_verifypeer) {
         $options['ssl']['verify_peer'] = false;
         $options['ssl']['verify_peer_name'] = false;
@@ -51,8 +51,8 @@
     public function VNifV2 ($contribuyentes) {
       return $this->__soapCall('VNifV2', [['Contribuyente' => $contribuyentes]]);
     }
-  
-    public function nif_validation ($nif) {
+
+    public static function nif_validation ($nif) {
       if (preg_match('~(ES)?([\w\d]{9})~', strtoupper($nif), $parts)) {
         $nif = end($parts);
         if (preg_match('~(^[XYZ\d]\d{7})([TRWAGMYFPDXBNJZSQVHLCKE]$)~', $nif, $parts)) {

@@ -1,8 +1,11 @@
-[![GitHub license](https://img.shields.io/github/license/fawno/AEAT.svg)](https://github.com/fawno/AEAT/blob/master/LICENSE)
-[![GitHub release](https://img.shields.io/github/release/fawno/AEAT.svg)](https://github.com/fawno/AEAT/releases)
-[![Packagist](https://img.shields.io/packagist/v/fawno/AEAT.svg)](https://packagist.org/packages/fawno/aeat)
+[![GitHub license](https://img.shields.io/github/license/fawno/AEAT)](https://github.com/fawno/AEAT/blob/master/LICENSE)
+[![GitHub release](https://img.shields.io/github/release/fawno/AEAT)](https://github.com/fawno/AEAT/releases)
+[![Packagist](https://img.shields.io/packagist/v/fawno/AEAT)](https://packagist.org/packages/fawno/aeat)
 [![Packagist Downloads](https://img.shields.io/packagist/dt/fawno/AEAT)](https://packagist.org/packages/fawno/aeat/stats)
-[![Documentation](https://img.shields.io/badge/manual-wsdlVNif-blue.svg)](docs/wsdlVNif.md)
+[![GitHub issues](https://img.shields.io/github/issues/fawno/AEAT)](https://github.com/fawno/AEAT/issues)
+[![GitHub forks](https://img.shields.io/github/forks/fawno/AEAT)](https://github.com/fawno/AEAT/network)
+[![GitHub stars](https://img.shields.io/github/stars/fawno/AEAT)](https://github.com/fawno/AEAT/stargazers)
+[![Documentation](https://img.shields.io/badge/manual-wsdlVNif-blue)](docs/wsdlVNif.md)
 
 # AEAT
 Clases para los servicios web de la [AEAT](http://www.agenciatributaria.es/)

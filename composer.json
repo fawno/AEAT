@@ -18,9 +18,23 @@
     "ext-openssl": "*",
     "ext-soap": "*"
   },
+  "require-dev": {
+    "phpunit/phpunit": "@stable"
+  },
+  "scripts": {
+    "test": "vendor/bin/phpunit"
+  },
+  "scripts-descriptions": {
+    "test": "Run PHPUnit tests"
+  },
   "autoload": {
     "psr-4": {
       "Fawno\\AEAT\\": "src"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Fawno\\AEAT\\Tests\\": "tests/"
     }
   }
 }

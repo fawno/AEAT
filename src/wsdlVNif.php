@@ -8,6 +8,7 @@
   @copyright Copyright 2018, Fawno (https://github.com/fawno)
   @license MIT License (http://www.opensource.org/licenses/mit-license.php)
 */
+	declare(strict_types=1);
 
   namespace Fawno\AEAT;
 
@@ -70,7 +71,7 @@
       return $this->__soapCall('VNifV2', [['Contribuyente' => $contribuyentes]]);
     }
 
-    public static function nif_validation ($nif) {
+    public static function nif_validation (string $nif) : bool {
       if (preg_match('~(ES)?([\w\d]{9})~', strtoupper($nif), $parts)) {
         $nif = end($parts);
         if (preg_match('~(^[XYZ\d]\d{7})([TRWAGMYFPDXBNJZSQVHLCKE]$)~', $nif, $parts)) {
@@ -82,7 +83,7 @@
         } elseif (preg_match('~(^[ABCDEFGHIJKLMUV])(\d{7})(\d$)~', $nif, $parts)) {
           $checksum = 0;
           foreach (str_split($parts[2]) as $pos => $val) {
-            $checksum += array_sum(str_split($val * (2 - ($pos % 2))));
+            $checksum += array_sum(str_split((string) ($val * (2 - ($pos % 2)))));
           }
           $checksum = ((10 - ($checksum % 10)) % 10);
           return ($parts[3] == $checksum);
@@ -90,7 +91,7 @@
           $control = 'JABCDEFGHI';
           $checksum = 0;
           foreach (str_split($parts[2]) as $pos => $val) {
-            $checksum += array_sum(str_split($val * (2 - ($pos % 2))));
+            $checksum += array_sum(str_split((string) ($val * (2 - ($pos % 2)))));
           }
           $checksum = substr($control, ((10 - ($checksum % 10)) % 10), 1);
           return ($parts[3] == $checksum);

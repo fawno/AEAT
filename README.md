@@ -1,5 +1,6 @@
 [![GitHub license](https://img.shields.io/github/license/fawno/AEAT)](https://github.com/fawno/AEAT/blob/master/LICENSE)
 [![GitHub release](https://img.shields.io/github/release/fawno/AEAT)](https://github.com/fawno/AEAT/releases)
+[![GitHub tag](https://img.shields.io/github/tag/fawno/AEAT)](https://github.com/fawno/AEAT/tags)
 [![Packagist](https://img.shields.io/packagist/v/fawno/AEAT)](https://packagist.org/packages/fawno/aeat)
 [![Packagist Downloads](https://img.shields.io/packagist/dt/fawno/AEAT)](https://packagist.org/packages/fawno/aeat/stats)
 [![GitHub issues](https://img.shields.io/github/issues/fawno/AEAT)](https://github.com/fawno/AEAT/issues)

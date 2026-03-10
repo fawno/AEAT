@@ -117,6 +117,8 @@ Ejemplo de consulta de un único Nif y de varios Nifs simultáneamente:
   require 'vendor/autoload.php';
 
   use Fawno\AEAT\wsdlVNif;
+	use Fawno\AEAT\Contribuyente\Contribuyente;
+	use Fawno\AEAT\Contribuyente\Contribuyentes;
 
   $local_cert = 'certificado.pem';
   $passphrase = 'contraseña';
@@ -125,17 +127,19 @@ Ejemplo de consulta de un único Nif y de varios Nifs simultáneamente:
   $options['trace'] = true;
   $options['cache_wsdl'] = WSDL_CACHE_NONE;
 
-  // Para consultar una persona física hay que especificar nombre y apellidos
-  $contribuyentes[] = ['Nif' => '00000000T', 'Nombre' => 'Apellido Apellido Nombre'];
-  $contribuyentes[] = ['Nif' => '00000000T', 'Nombre' => 'Nombre Apellido Apellido'];
-  // Para consultar una empresa basta con poner el Nif y dejar el Nombre vacío.
-  $contribuyentes[] = ['Nif' => '00000000T', 'Nombre' => null];
+	$contribuyentes = Contribuyentes::create(
+  	// Para consultar una persona física hay que especificar nombre y apellidos
+		Contribuyente::create('00000000T', 'Apellido Apellido Nombre'),
+		Contribuyente::create('00000000T', 'Nombre Apellido Apellido'),
+  	// Para consultar una empresa basta con poner el Nif y dejar el Nombre vacío.
+		Contribuyente::create('00000000T'),
+	);
 
   try {
     $wsdlVNif = new wsdlVNif($local_cert, $passphrase, $options, $ssl_verifypeer);
 
     // Se puede consultar un único Nif
-    $result = $wsdlVNif->VNifV2(['Nif' => '00000000T', 'Nombre' => null]);
+    $result = $wsdlVNif->VNifV2(Contribuyente::create('00000000T'));
     print_r($result);
 
     // También se puede sonsultar múltiples Nifs simultáneamente (hasta 10k)

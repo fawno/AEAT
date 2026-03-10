@@ -1,24 +1,26 @@
 <?php
 /*
-  Copyright 2018, Fawno (https://github.com/fawno)
+  Copyright 2026, Fawno (https://github.com/fawno)
 
   Licensed under The MIT License
   Redistributions of files must retain the above copyright notice.
 
-  @copyright Copyright 2018, Fawno (https://github.com/fawno)
+  @copyright Copyright 2026, Fawno (https://github.com/fawno)
   @license MIT License (http://www.opensource.org/licenses/mit-license.php)
 */
 	declare(strict_types=1);
 
   namespace Fawno\AEAT;
 
-  use SoapClient;
+	use SoapClient;
+	use Fawno\AEAT\Contribuyente\Contribuyente;
+	use Fawno\AEAT\Contribuyente\Contribuyentes;
 
   class wsdlVNif extends SoapClient {
-    protected $wsdl = 'https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/burt/jdit/ws/VNifV2.wsdl';
-    protected $location = 'https://www1.agenciatributaria.gob.es/wlpl/BURT-JDIT/ws/VNifV2SOAP';
+    public const WSDL = 'https://www2.agenciatributaria.gob.es/static_files/common/internet/dep/aplicaciones/es/aeat/burt/jdit/ws/VNifV2.wsdl';
+    public const LOCATION = 'https://www1.agenciatributaria.gob.es/wlpl/BURT-JDIT/ws/VNifV2SOAP';
 
-    public function __construct ($local_cert, $passphrase, $options = [], $ssl_verifypeer = true) {
+    public function __construct (string $local_cert, string $passphrase, array $options = [], bool $ssl_verifypeer = true) {
       $options += [
         'local_cert' => $local_cert,
         'passphrase' => $passphrase,
@@ -34,17 +36,11 @@
 
       $options['stream_context'] = $this->stream_context($options['stream_context'], $ssl_verifypeer);
 
-      return parent::__construct($this->wsdl, $options);
+      return parent::__construct(self::WSDL, $options);
     }
 
-    protected function stream_context ($options = [], $ssl_verifypeer = true) {
-      switch (gettype($options)) {
-        case 'array':
-          $context = stream_context_create($options);
-          break;
-        case 'resource':
-          $context = $options;
-      }
+    protected function stream_context (mixed $options = [], bool $ssl_verifypeer = true) : mixed {
+			$context = is_resource($options) ? $options : stream_context_create(is_array($options) ? $options : []);
 
       if (!$ssl_verifypeer) {
         stream_context_set_option($context, [
@@ -59,16 +55,18 @@
       return $context;
     }
 
-    public function __doRequest ($request, $location, $action, $version, $one_way = 0) {
-      return parent::__doRequest($request, $this->location, $action, $version, $one_way);
+    public function __doRequest (string $request, string $location, string $action, int $version, bool $one_way = false) : ?string {
+      return parent::__doRequest($request, self::LOCATION, $action, $version, $one_way);
     }
 
-    public function VNif ($contribuyentes) {
+    public function VNif (Contribuyente|Contribuyentes $contribuyentes) : Contribuyente|Contribuyentes {
       return $this->VNifV2($contribuyentes);
     }
 
-    public function VNifV2 ($contribuyentes) {
-      return $this->__soapCall('VNifV2', [['Contribuyente' => $contribuyentes]]);
+    public function VNifV2 (Contribuyente|Contribuyentes $contribuyentes) : Contribuyente|Contribuyentes {
+      $result = $this->__soapCall('VNifV2', [$contribuyentes->toRequest()]);
+
+			return Contribuyentes::parse($result->Contribuyente);
     }
 
     public static function nif_validation (string $nif) : bool {
@@ -97,6 +95,7 @@
           return ($parts[3] == $checksum);
         }
       }
-      return false;
+
+			return false;
     }
   }

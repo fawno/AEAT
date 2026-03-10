@@ -23,6 +23,8 @@ Thumbs.db
 #######################
 /.vscode
 /composer.lock
+.phpunit.cache
+.phpunit.*.cache
 # vim
 *~
 *.swp
@@ -43,3 +45,4 @@ nbproject/*
 # Sass preprocessor
 .sass-cache/
 data
+**.pem

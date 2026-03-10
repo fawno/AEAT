@@ -1,3 +1,4 @@
+[![GitHub Workflow](https://github.com/fawno/AEAT/actions/workflows/php.yml/badge.svg)](https://github.com/fawno/AEAT/actions/workflows/php.yml)
 [![GitHub license](https://img.shields.io/github/license/fawno/AEAT)](https://github.com/fawno/AEAT/blob/master/LICENSE)
 [![GitHub release](https://img.shields.io/github/release/fawno/AEAT)](https://github.com/fawno/AEAT/releases)
 [![GitHub tag](https://img.shields.io/github/tag/fawno/AEAT)](https://github.com/fawno/AEAT/tags)

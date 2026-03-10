@@ -55,8 +55,8 @@
       return $context;
     }
 
-    public function __doRequest (string $request, string $location, string $action, int $version, bool $one_way = false) : ?string {
-      return parent::__doRequest($request, self::LOCATION, $action, $version, $one_way);
+    public function __doRequest (string $request, string $location, string $action, int $version, bool $oneWay = false, ?string $uriParserClass = null) : ?string {
+      return parent::__doRequest($request, self::LOCATION, $action, $version, $oneWay);
     }
 
     public function VNif (Contribuyente|Contribuyentes $contribuyentes) : Contribuyente|Contribuyentes {

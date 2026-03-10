@@ -6,6 +6,7 @@
   displayDetailsOnTestsThatTriggerErrors="true"
   displayDetailsOnTestsThatTriggerNotices="true"
   displayDetailsOnTestsThatTriggerWarnings="true"
+  displayDetailsOnSkippedTests="true"
 >
     <php>
         <const name="_DEBUG_LEVEL" value="0"/>

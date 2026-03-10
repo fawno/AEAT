@@ -21,7 +21,7 @@
 
 		public function testwsdlVNif () {
 			if (!is_file(self::PKCS_FILE_1)) {
-				$this->markTestSkipped();
+				$this->markTestSkipped('Key file not found, test skipped.');
 			}
 
 			$wsdlVNif = new wsdlVNif(self::PKCS_FILE_1, self::PKCS_PASS_1, [], false);
